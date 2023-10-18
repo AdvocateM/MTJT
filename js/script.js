@@ -98,3 +98,22 @@ var swiper = new Swiper(".logo-slider", {
       },
    },
 });
+
+
+const showPopupButton = document.getElementById("showPopup");
+const popup = document.getElementById("popup");
+const closePopupButton = document.getElementById("closePopup");
+const closePopupLink = document.getElementById("closePopup");
+
+showPopupButton.addEventListener("click", () => {
+   popup.style.display = "block";
+});
+
+closePopupButton.addEventListener("click", () => {
+   popup.style.display = "none";
+});
+
+closePopupLink.addEventListener("click", () => {
+   popup.style.display = "none";
+   console.log("Working...");
+});
