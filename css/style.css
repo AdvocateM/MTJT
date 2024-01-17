@@ -403,8 +403,8 @@ section {
   position: relative;
 }
 
-.home .slide .content h3 {
-  font-size: 6rem;
+.home .slide .content h4 {
+  font-size: 5rem;
   color: var(--black);
   text-transform: capitalize;
   text-transform: uppercase;
@@ -417,7 +417,7 @@ section {
   padding: 1rem 0;
 }
 
-.home .swiper-button-next,
+/* .home .swiper-button-next,
 .home .swiper-button-prev {
   top: initial;
   bottom: 0;
@@ -427,6 +427,10 @@ section {
   width: 7rem;
   line-height: 7rem;
   background: var(--white);
+} */
+video{
+  width: 200rem;
+  height: 50rem;
 }
 
 .home .swiper-button-next:hover,
@@ -889,6 +893,10 @@ section {
 .footer .credit span {
   color: var(--yellow);
 }
+.footer .credit a {
+  color: var(--yellow);
+  text-decoration: none;
+}
 
 @media (max-width: 1200px) {
   .header {
@@ -965,43 +973,56 @@ section {
 
 /* Styles for the popup */
 .popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow-y: auto; /* Allow vertical scrolling */
 }
 
 .popup-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 80%; /* Adjust the maximum width as needed */
+  width: 100%;
 }
 
 .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  display: block; /* Show close button by default */
 }
 
 .popup-inner-content {
-    padding: 10px;
+  padding: 10px;
 }
 
 /* Additional styles for your content and button */
 .content {
-    /* Your content styles here */
+  /* Your content styles here */
 }
 
 .btn {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+  .popup-content {
+      max-width: 50%; /* Adjust the maximum width for smaller screens */
+      /* top: 50%; */
+
+  }
 }
