@@ -102,18 +102,19 @@ var swiper = new Swiper(".logo-slider", {
 
 const showPopupButton = document.getElementById("showPopup");
 const popup = document.getElementById("popup");
-const closePopupButton = document.getElementById("closePopup");
-const closePopupLink = document.getElementById("closePopup");
+const closePopupButton = document.getElementById("closePopupButton");  // Unique ID for the button
+const closePopupLink = document.getElementById("closePopupLink");  // Unique ID for the link
 
 showPopupButton.addEventListener("click", () => {
-   popup.style.display = "block";
+    popup.style.display = "block";
 });
 
 closePopupButton.addEventListener("click", () => {
-   popup.style.display = "none";
+    popup.style.display = "none";
 });
 
 closePopupLink.addEventListener("click", () => {
-   popup.style.display = "none";
-   console.log("Working...");
+    popup.style.display = "none";
+    console.log("Working...");
 });
+
