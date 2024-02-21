@@ -116,6 +116,11 @@ section {
   color: var(--yellow);
 }
 
+.logo{
+  width: 8.5rem; /* Adjust the width and height as needed */
+  height: 8.5rem; /* Adjust the width and height as needed */
+}
+
 .header .navbar a {
   font-size: 2rem;
   color: var(--black);
@@ -385,7 +390,13 @@ section {
   position: relative;
   background-size: cover !important;
   background-position: center !important;
+  
 }
+/* .home {
+  background-image: url('../images/camera.jpeg'); 
+  background-size: cover;
+  background-position: center; 
+} */
 
 .home .slide::before {
   content: '';
@@ -1018,17 +1029,27 @@ video{
   .header .login-form {
     width: 90%;
   }
-  .home .slide {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+  /* Change background to an image */
+  .home {
+    background-image: url('../images/camera.jpeg'); /* Specify the path to your image */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
   }
+
+  /* Center the content */
   .home .slide .content {
     text-align: center;
   }
+
+  /* Adjust the font size */
   .home .slide .content h4 {
-    font-size: 3rem;
+    font-size: 2rem; 
   }
+
+  .HD {
+    display: none;
+  }
+  
 }
 
 @media (max-width: 450px) {
