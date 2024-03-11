@@ -168,7 +168,7 @@
       <div class="content">
          <h3>Leaders in Hardware, Accounting, and IT Solutions</h3>
          <p>Welcome to MTJT, your go-to destination for a comprehensive range of solutions in the world of logistics, information technology, finance, and hardware supply. We are a multifaceted organization dedicated to meeting the diverse needs of small and medium-sized enterprises (SMEs) across various industries.</p>
-         <a href="#about" class="btn" id="showPopup">Read More</a>
+         <a  class="btn" id="showPopup">Read More</a>
      </div>
      
      <div class="popup" id="popup">
@@ -736,5 +736,26 @@
     lightGallery(document.querySelector('.projects .box-container'));
 </script>
 
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+       const showPopupButton = document.getElementById("showPopup");
+       const popup = document.getElementById("popup");
+       const closePopupButton = document.getElementById("closePopup");  // Unique ID for the button
+       const closePopupLink = document.getElementById("closePopupLink");  // Unique ID for the link
+
+       showPopupButton.addEventListener("click", () => {
+           popup.style.display = "block";
+       });
+
+       closePopupButton.addEventListener("click", () => {
+           popup.style.display = "none";
+       });
+
+       closePopupLink.addEventListener("click", () => {
+           popup.style.display = "none";
+           console.log("Working...");
+       });
+   });
+</script>
 </body>
 </html>
