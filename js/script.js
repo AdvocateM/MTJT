@@ -100,22 +100,22 @@ var swiper = new Swiper(".logo-slider", {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
-   const showPopupButton = document.getElementById("showPopup");
-   const popup = document.getElementById("popup");
-   const closePopupButton = document.getElementById("closePopup");  // Unique ID for the button
-   const closePopupLink = document.getElementById("closePopupLink");  // Unique ID for the link
+// document.addEventListener("DOMContentLoaded", function() {
+//    const showPopupButton = document.getElementById("showPopup");
+//    const popup = document.getElementById("popup");
+//    const closePopupButton = document.getElementById("closePopup");  // Unique ID for the button
+//    const closePopupLink = document.getElementById("closePopupLink");  // Unique ID for the link
 
-   showPopupButton.addEventListener("click", () => {
-       popup.style.display = "block";
-   });
+//    showPopupButton.addEventListener("click", () => {
+//        popup.style.display = "block";
+//    });
 
-   closePopupButton.addEventListener("click", () => {
-       popup.style.display = "none";
-   });
+//    closePopupButton.addEventListener("click", () => {
+//        popup.style.display = "none";
+//    });
 
-   closePopupLink.addEventListener("click", () => {
-       popup.style.display = "none";
-       console.log("Working...");
-   });
-});
+//    closePopupLink.addEventListener("click", () => {
+//        popup.style.display = "none";
+//        console.log("Working...");
+//    });
+// });
