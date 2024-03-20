@@ -587,9 +587,15 @@
       event.preventDefault();
 
       // Retrieve input values from the form
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const email = document.getElementById('email').value;
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+
+      // Validate input
+      if (!name || !phone || !email) {
+         alert('Please fill in all fields.');
+         return;
+      }
 
       // Create a new FormData object from the form element
       var formData = new FormData();
@@ -642,34 +648,55 @@
            console.log("Working...");
        });
    });
+   
 
-   document.getElementById('contactForm').addEventListener('submit', function(event) {
-      event.preventDefault();
+   document.getElementById('contactForm').addEventListener('submit', function (event) {
+         event.preventDefault();
 
-      // Create a new FormData object from the form element
-      var formData = new FormData(this);
+         // Retrieve input values from the form
+         const name = document.getElementById('name').value.trim();
+         const email = document.getElementById('email').value.trim();
+         const phone = document.getElementById('phone').value.trim();
+         const message = document.getElementById('message').value.trim();
 
-      // Append additional parameters like service ID, template ID, and user ID
-      formData.append('service_id', 'service_8k8fw04'); // Replace 'YOUR_SERVICE_ID' with your EmailJS service ID
-      formData.append('template_id', 'template_94mm40z'); // Replace 'YOUR_TEMPLATE_ID' with your EmailJS template ID
-      formData.append('user_id', 'DrZe2OMffxIVnaBiK'); // Replace 'YOUR_PUBLIC_KEY' with your EmailJS user ID (public key)
+         // Validate input
+         if (!name || !email || !phone || !message) {
+            alert('Please fill in all fields.');
+            return;
+         }
 
-      // Send email using EmailJS
-      fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
-         method: 'POST',
-         body: formData
-      })
-      .then(function(response) {
-         console.log('Email sent successfully:', response);
-         // Optionally, display a success message to the user
-         alert('Your message has been sent successfully!');
-      })
-      .catch(function(error) {
-         console.error('Email sending failed:', error);
-         // Optionally, display an error message to the user
-         alert('An error occurred while sending your message. Please try again later.');
+         // Create a new FormData object from the form element
+         var formData = new FormData();
+
+         // Append form data to the FormData object
+         formData.append('name', name);
+         formData.append('email', email);
+         formData.append('phone', phone);
+         formData.append('message', message);
+         formData.append('service_id', 'service_8k8fw04'); // Replace 'YOUR_SERVICE_ID' with your EmailJS service ID
+         formData.append('template_id', 'template_94mm40z'); // Replace 'YOUR_TEMPLATE_ID' with your EmailJS template ID
+         formData.append('user_id', 'DrZe2OMffxIVnaBiK'); // Replace 'YOUR_PUBLIC_KEY' with your EmailJS user ID (public key)
+
+         // Send email using EmailJS
+         fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
+            method: 'POST',
+            body: formData
+         })
+            .then(function (response) {
+               if (response.ok) {
+                  // Optionally, display a success message to the user
+                  alert('Your message has been sent successfully!');
+               } else {
+                  throw new Error('Failed to send email. Please try again later.');
+               }
+            })
+            .catch(function (error) {
+               console.error('Email sending failed:', error);
+               // Optionally, display an error message to the user
+               alert('An error occurred while sending your message. Please try again later.');
+            });
       });
-   });
+   
 </script>
 
  
