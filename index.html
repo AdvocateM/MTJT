@@ -42,7 +42,7 @@
       <div id="menu-btn" class="fas fa-bars"></div>
       <div id="info-btn" class="fas fa-info-circle"></div>
       <div id="search-btn" class="fas fa-search"></div>
-      <!-- <div id="login-btn" class="fas fa-user"></div> -->
+      <div id="login-btn" class="fas fa-phone-alt"></div>
    </div>
 
    <form action="" class="search-form">
@@ -50,18 +50,13 @@
       <label for="search-box" class="fas fa-search"></label>
    </form>
 
-   <form action="" class="login-form">
-      <h3>login form</h3>
-      <input type="email" placeholder="enter your email" class="box">
-      <input type="password" placeholder="enter your password" class="box">
-      <div class="flex">
-         <input type="checkbox" name="" id="remember-me">
-         <label for="remember-me">remember me</label>
-         <a href="#">forgot password?</a>
-      </div>
-      <input type="submit" value="login now" class="btn">
-      <p>don't have an account <a href="#">create one!</a></p>
-   </form>
+   <form id="call-back" class="login-form">
+      <h3>Request a Call</h3>
+      <input type="text" placeholder="Enter your name" class="box" id="name" required>
+      <input type="email" placeholder="Enter your email" class="box" id="email" required>
+      <input type="tel" placeholder="Enter your phone number" class="box" id="phone" required>
+      <input type="submit" value="Call Me" class="btn">
+  </form>
 
 </header>
 
@@ -166,7 +161,7 @@
       </div>
 
       <div class="content">
-         <h3>Leaders in Hardware, Accounting, and IT Solutions</h3>
+         <h3>Leaders in Logistics, Accounting, and IT Solutions</h3>
          <p>Welcome to MTJT, your go-to destination for a comprehensive range of solutions in the world of logistics, information technology, finance, and hardware supply. We are a multifaceted organization dedicated to meeting the diverse needs of small and medium-sized enterprises (SMEs) across various industries.</p>
          <a  class="btn" id="showPopup">Read More</a>
      </div>
@@ -416,7 +411,7 @@
             </div>
          </div>
 
-         <div class="swiper-slide slide">
+         <!-- <div class="swiper-slide slide">
             <p>Our experience with MTJT had a bumpy start due to a misunderstanding, but the good news is that we were able to resolve the issue and find a solution. Thanks to their willingness to address the problem and find common ground, our partnership with MTJT has improved over time. We appreciate their commitment to making things right.</p>
             <div class="user">
                <img src="images/chromatic.png" alt="">
@@ -448,7 +443,7 @@
                   </div>
                </div>
             </div>
-         </div>
+         </div> -->
 
          <!-- <div class="swiper-slide slide">
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis unde suscipit quis consequuntur, tempora corporis ex molestias dignissimos in cumque sunt ducimus voluptate inventore harum earum rem aperiam vel modi?</p>
@@ -522,37 +517,20 @@
       <!-- <iframe  src="227 Minnaar St, Pretoria Central, Pretoria, 0001" allowfullscreen="" loading="lazy"></iframe> -->
       <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.4943306743558!2d28.186922675400176!3d-25.754230877356605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95621668baaaab%3A0xbcd15b0cb0550c47!2sMTJT%20GROUP%20OF%20COMPANIES%20(PTY%20LTD)!5e0!3m2!1sen!2sza!4v1697501340530!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
 
-      <form action="">
+      <form id="contactForm">
          <h3>get in touch</h3>
-         <input type="text" placeholder="name" class="box">
-         <input type="email" placeholder="email" class="box">
-         <input type="number" placeholder="phone" class="box">
-         <textarea name="" placeholder="message" class="box" id="" cols="30" rows="10"></textarea>
+         <input type="text" placeholder="name" class="box" name="name" id="name">
+         <input type="email" placeholder="email" class="box" name="email" id="email">
+         <input type="number" placeholder="phone" class="box" name="phone" id="phone">
+         <textarea name="message" placeholder="message" class="box" id="message" cols="30" rows="10"></textarea>
          <input type="submit" value="send message" class="btn">
-      </form>
+       </form>
 
    </div>
 
 </section>
 
 <!-- contact section ends -->
-
-<!-- client logo section starts -->
-
-<!-- <section class="logo-container">
-   <div class="swiper logo-slider">
-      <div class="swiper-wrapper">
-         <div class="swiper-slide slide"><img src="images/logo.jpg" alt=""></div>
-         <div class="swiper-slide slide"><img src="images/client-logo-2.png" alt=""></div>
-         <div class="swiper-slide slide"><img src="images/client-logo-3.png" alt=""></div>
-         <div class="swiper-slide slide"><img src="images/client-logo-4.png" alt=""></div>
-         <div class="swiper-slide slide"><img src="images/client-logo-5.png" alt=""></div>
-         <div class="swiper-slide slide"><img src="images/client-logo-6.png" alt=""></div>
-      </div>
-   </div>
-</section> -->
-
-<!-- client logo section ends -->
 
 <!-- footer section starts  -->
 
@@ -580,8 +558,11 @@
 <!-- Include Swiper library -->
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
+<!-- Include Emailjs Library -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 <!-- Include custom js file -->
-<script src="js/script.js"></script>
+<script src="./js/script.js"></script>
 
 <!-- Initialize Swiper -->
 <script>
@@ -598,7 +579,50 @@
     lightGallery(document.querySelector('.projects .box-container'));
 </script>
 
+
+
 <script>
+
+   document.getElementById('call-back').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      // Retrieve input values from the form
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+
+      // Create a new FormData object from the form element
+      var formData = new FormData();
+
+      // Append form data to the FormData object
+      formData.append('NAME', name); // Use 'NAME' instead of 'name'
+      formData.append('PHONE', phone); // Use 'PHONE' instead of 'phone'
+      formData.append('EMAIL', email); // Use 'EMAIL' instead of 'email'
+      formData.append('service_id', 'service_8k8fw04');
+      formData.append('template_id', 'template_1iqf39m');
+      formData.append('user_id', 'DrZe2OMffxIVnaBiK');
+
+      // Send email using EmailJS
+      fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
+         method: 'POST',
+         body: formData
+      })
+         .then(function (response) {
+            console.log('Email sent successfully:', response);
+            // Optionally, display a success message to the user
+            alert('Your request has been sent successfully!');
+         })
+         .catch(function (error) {
+            console.error('Email sending failed:', error);
+            // Optionally, display an error message to the user
+            alert('An error occurred while sending your request. Please try again later.');
+         });
+   });
+
+
+
+
+
    document.addEventListener("DOMContentLoaded", function() {
        const showPopupButton = document.getElementById("showPopup");
        const popup = document.getElementById("popup");
@@ -618,6 +642,36 @@
            console.log("Working...");
        });
    });
+
+   document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Create a new FormData object from the form element
+      var formData = new FormData(this);
+
+      // Append additional parameters like service ID, template ID, and user ID
+      formData.append('service_id', 'service_8k8fw04'); // Replace 'YOUR_SERVICE_ID' with your EmailJS service ID
+      formData.append('template_id', 'template_94mm40z'); // Replace 'YOUR_TEMPLATE_ID' with your EmailJS template ID
+      formData.append('user_id', 'DrZe2OMffxIVnaBiK'); // Replace 'YOUR_PUBLIC_KEY' with your EmailJS user ID (public key)
+
+      // Send email using EmailJS
+      fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
+         method: 'POST',
+         body: formData
+      })
+      .then(function(response) {
+         console.log('Email sent successfully:', response);
+         // Optionally, display a success message to the user
+         alert('Your message has been sent successfully!');
+      })
+      .catch(function(error) {
+         console.error('Email sending failed:', error);
+         // Optionally, display an error message to the user
+         alert('An error occurred while sending your message. Please try again later.');
+      });
+   });
 </script>
+
+ 
 </body>
 </html>

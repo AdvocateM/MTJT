@@ -22,6 +22,7 @@ document.querySelector('#login-btn').onclick = () =>{
 };
 
 document.querySelector('#info-btn').onclick = () =>{
+   console.log('Info button clicked');
    contactInfo.classList.add('active');
 }
 
@@ -100,6 +101,7 @@ var swiper = new Swiper(".logo-slider", {
 });
 
 
+
 // document.addEventListener("DOMContentLoaded", function() {
 //    const showPopupButton = document.getElementById("showPopup");
 //    const popup = document.getElementById("popup");
@@ -119,3 +121,33 @@ var swiper = new Swiper(".logo-slider", {
 //        console.log("Working...");
 //    });
 // });
+
+
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   // Create a new FormData object from the form element
+   var formData = new FormData(this);
+
+   // Append additional parameters like service ID, template ID, and user ID
+   formData.append('service_id', 'service_8k8fw04'); // Replace 'YOUR_SERVICE_ID' with your EmailJS service ID
+   formData.append('template_id', 'template_94mm40z'); // Replace 'YOUR_TEMPLATE_ID' with your EmailJS template ID
+   formData.append('user_id', 'DrZe2OMffxIVnaBiK'); // Replace 'YOUR_PUBLIC_KEY' with your EmailJS user ID (public key)
+
+   // Send email using EmailJS
+   fetch('https://api.emailjs.com/api/v1.0/email/send-form', {
+      method: 'POST',
+      body: formData
+   })
+   .then(function(response) {
+      console.log('Email sent successfully:', response);
+      // Optionally, display a success message to the user
+      alert('Your message has been sent successfully!');
+   })
+   .catch(function(error) {
+      console.error('Email sending failed:', error);
+      // Optionally, display an error message to the user
+      alert('An error occurred while sending your message. Please try again later.');
+   });
+});
+
